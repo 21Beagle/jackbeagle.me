@@ -120,7 +120,7 @@ hr {
   font-family: monospace;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     .column {
       width: 100%;
     }
