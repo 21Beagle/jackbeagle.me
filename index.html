@@ -36,32 +36,116 @@
     <hr>
     <div class="row">
         <div class="column left">
-            <h3 >About me</h3>
-            <p>Hello, my name is Jack Beagle. I am a Mathematics graduate from the University of Essex, where I gained my master's degree with distinction. I am currently completing a course with IT Career Switch to learn coding, software development and, web development. So far, I have learned the basics of HTML 5, CSS and JavaScript having self-taught myself Python before starting the course. In the future, I will know more about other languages such as C, PHP, and, Java. </p>
-            <h3 >Projects</h3>  
-            <p>This website is the first website I have created from scratch, as you can see, I have used HTML 5, CSS and, JavaScript. I have taken the time to ensure the website is mobile friendly. In the future, I hope to implement more javascript and CSS elements to make the page a little bit fancier.</p>   
+
+
+        
+            <div class="container">
+                <div class="block">
+                  <div class="content">
+                    <h3 >About me</h3>
+                    <p class="js-excerpt excerpt-hidden">
+                        Hello, my name is Jack Beagle. I am a Mathematics graduate from the University of Essex, where I gained my master's degree with distinction. I am currently completing a course with IT Career Switch to learn coding, software development and, web development. So far, I have learned the basics of HTML 5, CSS and JavaScript having self-taught myself Python before starting the course. In the future, I will know more about other languages such as C, PHP, and, Java.</p>
+                  </div>
+                  <a role="button" href="#" class="js-show-more">Show more</a>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div class="block">
+                  <div class="content">
+                    <h3 >Projects</h3> 
+                    <p class="js-excerpt excerpt-hidden">
+                        This website is the first website I have created from scratch, as you can see, I have used HTML 5, CSS and, JavaScript. I have taken the time to ensure the website is mobile friendly. In the future, I hope to implement more javascript and CSS elements to make the page a little bit fancier.</p>
+                  </div>
+                  <a role="button" href="#" class="js-show-more">Show more</a>
+                </div>
+            </div>
+   
         </div>
         <div class="column right">
-            <h3 id="listheading">Programming Languages</h3>
-            <ul>
-                <li>Python</li>
-                <li>JavaScript</li>
-                <li>HTML5</li>
-                <li>LaTex</li>
-                <li>R</li>
-                <li>Matlab</li>
-            </ul>
-            <h3 id="listheading">Programs</h4>
-            <ul>
-                <li>R Studio</li>
-                <li>Maple</li>
-                <li>Minitab 17</li>
-                <li>SageMath</li>
-                <li>lindo</li>
-            </ul>
+            <div class="container">
+                <div class="block">
+                  <div class="content">
+                    <h3 id="listheading">Programming Languages</h3>
+                        <ul class="js-excerpt excerpt-hidden">
+                            <li>Python</li>
+                            <li>JavaScript</li>
+                            <li>HTML5</li>
+                            <li>LaTex</li>
+                            <li>R</li>
+                            <li>Matlab</li>
+                        </ul>
+                  </div>
+                  <a role="button" href="#" class="js-show-more">Show more</a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="block">
+                  <div class="content">
+                    <h3 id="listheading">Programs</h3>
+                        <ul class="js-excerpt excerpt-hidden">
+                            <li>R Studio</li>
+                            <li>Maple</li>
+                            <li>Minitab 17</li>
+                            <li>SageMath</li>
+                            <li>lindo</li>
+                        </ul>
+                  </div>
+                  <a role="button" href="#" class="js-show-more">Show more</a>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
+    
+      
+
+
+
   <footer>jackbeagle@live.co.uk</footer>
+  <script>
+      const Utils = {
+
+        addClass: function(element, theClass) {
+        element.classList.add(theClass);
+        },
+
+        removeClass: function(element, theClass) {
+        element.classList.remove(theClass);
+        },
+
+        showMore: function(element, excerpt) {
+        element.addEventListener("click", event => {
+        const linkText = event.target.textContent.toLowerCase();
+        event.preventDefault();
+
+        console.log(this);
+            if (linkText == "show more") {
+                element.textContent = "Show less";
+                this.removeClass(excerpt, "excerpt-hidden");
+                this.addClass(excerpt, "excerpt-visible");
+            } else {
+                element.textContent = "Show more";
+                this.removeClass(excerpt, "excerpt-visible");
+                this.addClass(excerpt, "excerpt-hidden");
+    }
+  });
+} 
+};
+
+        const ExcerptWidget = {
+        showMore: function(showMoreLinksTarget, excerptTarget) {
+        const showMoreLinks = document.querySelectorAll(showMoreLinksTarget);
+
+        showMoreLinks.forEach(function(link) {
+        const excerpt = link.previousElementSibling.querySelector(excerptTarget);
+        Utils.showMore(link, excerpt);
+    });
+}
+};
+
+        ExcerptWidget.showMore('.js-show-more', '.js-excerpt');
+  </script>
 </body>
 </html>
